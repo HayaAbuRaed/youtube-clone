@@ -1,9 +1,15 @@
 import React from 'react'
+import { Box } from '@mui/material'
+import { useState, useEffect } from 'react'
+import { fetchFromAPI } from '../../data'
 
-const index = () => {
+const Feed = () => {
+  useEffect(()=>{
+    fetchFromAPI
+  },[])
   return (
-    <div>index</div>
+    <div>Feed</div>
   )
 }
 
-export default index
+export default Feed
