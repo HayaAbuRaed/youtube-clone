@@ -64,10 +64,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 );
 
 
-
-
-
-
 const Header= ({component}) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);

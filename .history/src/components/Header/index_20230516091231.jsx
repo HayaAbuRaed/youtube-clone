@@ -1,22 +1,41 @@
 import * as React from 'react';
 import {styled, useTheme } from '@mui/material/styles';
-import {Stack, Box, Typography} from '@mui/material';
-import {Drawer, CssBaseline,Toolbar, Divider} from '@mui/material';
-import {List, ListItem,ListItemButton, ListItemIcon , ListItemText} from '@mui/material';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+
+import NotificationsIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import Video from '@mui/icons-material/VideoCallOutlined';
+import { Avatar, Stack, Tooltip  } from '@mui/material';
+import Badge from '@mui/material/Badge';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 import {Link} from 'react-router-dom';
 import logo from '../../assets/logoHalf.png'
 
 import SearchBar from './SearchBar';
-import IconsNav from './IconsNav';
 
 const drawerWidth = 240;
+// FixME
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+//FixEnd
+
+
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -69,6 +88,17 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 
 
 const Header= ({component}) => {
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+    
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -116,8 +146,59 @@ const Header= ({component}) => {
           <Box sx={{ flexGrow: 1 }} />
           
           {/* icons nav */}
-          <IconsNav/>
+
+          <Stack direction={'row'}>
+            <IconButton
+              size="large"
+              aria-label="show notifications"
+              color="inherit"
+              sx={{padding: {xs: 0.5, sm:1.5}}}
+            > 
+              <Video />
+            </IconButton>
+
+            <IconButton
+              size="large"
+              aria-label="show notifications"
+              color="inherit"
+              sx={{padding: {xs: 0.5, sm:1.5}}}
+            >
+              <Badge badgeContent={0} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
           
+            <Box sx={{ flexGrow: 0 }} display={'flex'} alignItems={'center'} padding={1}>
+              <Tooltip title="Open settings">
+                <IconButton  sx={{ p: 0 }} >
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{maxWidth: 35, maxHeight:35}}/>
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            
+          </Stack>
 
         </Toolbar>
       </AppBar>

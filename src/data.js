@@ -23,5 +23,6 @@ try {
 }
 
 export const fetchFromAPI = async(url) => {
-    const res = await axios.get(`${urlBase}/${url}`,options);
+    const {res} = await axios.get(`${urlBase}/${url}`,options);
+    return res;
 }

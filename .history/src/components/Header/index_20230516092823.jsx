@@ -64,10 +64,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 );
 
 
-
-
-
-
 const Header= ({component}) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -124,7 +120,7 @@ const Header= ({component}) => {
 
        
       {/* sidebar */}
-      <Drawer
+      {/* <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -174,7 +170,7 @@ const Header= ({component}) => {
       <Main open={open}>
         <DrawerHeader />
         {component}
-      </Main>      
+      </Main>       */}
     </Box>
   );
 }

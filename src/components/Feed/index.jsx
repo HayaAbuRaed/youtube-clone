@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { fetchFromAPI } from '../../data'
 
 const Feed = () => {
+
   useEffect(()=>{
-    fetchFromAPI
+    fetchFromAPI()
   },[])
+
   return (
     <div>Feed</div>
   )
