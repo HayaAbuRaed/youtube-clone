@@ -18,6 +18,7 @@ import { fetchFromAPI } from '../../data';
 import MainArea from './Main';
 
 const drawerWidth = 240;
+// const selectedCategory = 'Home'
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -132,14 +133,14 @@ const Header= ({component}) => {
 
         <List>
           {sidebar.map(({txt, icon, selectedIcon}) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
+            <ListItem key={txt} disablePadding>
               <ListItemButton onClick={() => setSelectedCategory(txt)}>
                 <ListItemIcon>
                   {
-                    txt === selectedCategory ? selectedIcon : icon
+                      txt === selectedCategory ? selectedIcon : icon
                   }
                 </ListItemIcon>
-                <ListItemText primary={txt}/>
+                <ListItemText primary={txt} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -148,7 +149,7 @@ const Header= ({component}) => {
         <Divider />
         <List>
           {categories.map(({txt, icon, selectedIcon} ) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
+            <ListItem key={txt} disablePadding>
               <ListItemButton onClick={() => setSelectedCategory(txt)}>
                 <ListItemIcon>
                   {txt === selectedCategory ? selectedIcon : icon}

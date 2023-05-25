@@ -18,6 +18,7 @@ import { fetchFromAPI } from '../../data';
 import MainArea from './Main';
 
 const drawerWidth = 240;
+// const selectedCategory = 'Home'
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -48,7 +49,7 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 const Header= ({component}) => {
-  const [selectedCategory, setSelectedCategory] = useState('Home')
+  const [selectedCategory, setSelectedCategory] = useState('New')
   
   useEffect(()=>{
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then(data => {})
@@ -81,7 +82,7 @@ const Header= ({component}) => {
           </IconButton>
 
           {/* LOGO */}
-          <Link to="/" style={{textDecoration:'none', color:'#000'}} onClick={() => setSelectedCategory('Home')}>
+          <Link to="/" style={{textDecoration:'none', color:'#000'}}>
             <Stack direction={'row'} sx={{ marginRight: { xs: 1, sm: 0} }} padding={1}>
               <Typography
               variant="h6"
@@ -131,15 +132,15 @@ const Header= ({component}) => {
         <Divider />
 
         <List>
-          {sidebar.map(({txt, icon, selectedIcon}) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => setSelectedCategory(txt)}>
+          {sidebar.map(({txt, icon, selected}) => (
+            <ListItem key={txt} disablePadding>
+              <ListItemButton>
                 <ListItemIcon>
                   {
-                    txt === selectedCategory ? selectedIcon : icon
+                      {txt} === {selectedCategory} ? selected : icon
                   }
                 </ListItemIcon>
-                <ListItemText primary={txt}/>
+                <ListItemText primary={txt} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -147,11 +148,11 @@ const Header= ({component}) => {
 
         <Divider />
         <List>
-          {categories.map(({txt, icon, selectedIcon} ) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => setSelectedCategory(txt)}>
+          {categories.map(({txt, icon, selected} ) => (
+            <ListItem key={txt} disablePadding>
+              <ListItemButton>
                 <ListItemIcon>
-                  {txt === selectedCategory ? selectedIcon : icon}
+                  {{txt} === {selectedCategory} ? selected : icon}
                 </ListItemIcon>
                 <ListItemText primary={txt} />
               </ListItemButton>
@@ -159,7 +160,7 @@ const Header= ({component}) => {
           ))}
         </List>
       </Drawer>
-      
+      {component}
       <MainArea component={component} open={open}/>
     </Box>
   );

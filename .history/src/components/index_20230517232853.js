@@ -9,8 +9,8 @@ export {default as AfterSearch} from'../Pages/AfterSearch'
 export const sidebar =[
     {
         txt: 'Home',
-        icon:<HomeOutlined/>,
-        selectedIcon: <Home/> 
+        icon: <Home/>,
+        selectedIcon:  
     },
     {
         txt: 'Explore',

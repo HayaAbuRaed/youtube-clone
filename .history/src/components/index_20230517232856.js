@@ -10,7 +10,7 @@ export const sidebar =[
     {
         txt: 'Home',
         icon:<HomeOutlined/>,
-        selectedIcon: <Home/> 
+        selectedIcon:  
     },
     {
         txt: 'Explore',

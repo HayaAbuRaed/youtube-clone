@@ -132,7 +132,7 @@ const Header= ({component}) => {
 
         <List>
           {sidebar.map(({txt, icon, selectedIcon}) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
+            <ListItem key={txt} disablePadding  sx={{backgroundColor : (txt === selectedCategory) && 'gray', borderRadius}}>
               <ListItemButton onClick={() => setSelectedCategory(txt)}>
                 <ListItemIcon>
                   {
@@ -148,7 +148,7 @@ const Header= ({component}) => {
         <Divider />
         <List>
           {categories.map(({txt, icon, selectedIcon} ) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
+            <ListItem key={txt} disablePadding>
               <ListItemButton onClick={() => setSelectedCategory(txt)}>
                 <ListItemIcon>
                   {txt === selectedCategory ? selectedIcon : icon}

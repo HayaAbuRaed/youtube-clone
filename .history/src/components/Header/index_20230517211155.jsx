@@ -15,9 +15,10 @@ import SearchBar from './SearchBar';
 import IconsNav from './IconsNav';
 import { useState, useEffect } from 'react';
 import { fetchFromAPI } from '../../data';
-import MainArea from './Main';
+import MainArea from './Main'
 
 const drawerWidth = 240;
+// const selectedCategory = 'Home'
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -36,7 +37,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export const DrawerHeader = styled('div')(({ theme }) => ({
+const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
@@ -45,10 +46,27 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-
+// const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+//   ({ theme, open }) => ({
+//     flexGrow: 1,
+//     padding: theme.spacing(3),
+//     transition: theme.transitions.create('margin', {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen,
+//     }),
+//     marginLeft: `-${drawerWidth}px`,
+//     ...(open && {
+//       transition: theme.transitions.create('margin', {
+//         easing: theme.transitions.easing.easeOut,
+//         duration: theme.transitions.duration.enteringScreen,
+//       }),
+//       marginLeft: 0,
+//     }),
+//   }),
+// );
 
 const Header= ({component}) => {
-  const [selectedCategory, setSelectedCategory] = useState('Home')
+  const [selectedCategory, setSelectedCategory] = useState('New')
   
   useEffect(()=>{
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then(data => {})
@@ -81,7 +99,7 @@ const Header= ({component}) => {
           </IconButton>
 
           {/* LOGO */}
-          <Link to="/" style={{textDecoration:'none', color:'#000'}} onClick={() => setSelectedCategory('Home')}>
+          <Link to="/" style={{textDecoration:'none', color:'#000'}}>
             <Stack direction={'row'} sx={{ marginRight: { xs: 1, sm: 0} }} padding={1}>
               <Typography
               variant="h6"
@@ -131,15 +149,15 @@ const Header= ({component}) => {
         <Divider />
 
         <List>
-          {sidebar.map(({txt, icon, selectedIcon}) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => setSelectedCategory(txt)}>
+          {sidebar.map(({txt, icon, selected}) => (
+            <ListItem key={txt} disablePadding>
+              <ListItemButton>
                 <ListItemIcon>
                   {
-                    txt === selectedCategory ? selectedIcon : icon
+                      {txt} === {selectedCategory} ? selected : icon
                   }
                 </ListItemIcon>
-                <ListItemText primary={txt}/>
+                <ListItemText primary={txt} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -147,11 +165,11 @@ const Header= ({component}) => {
 
         <Divider />
         <List>
-          {categories.map(({txt, icon, selectedIcon} ) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => setSelectedCategory(txt)}>
+          {categories.map(({txt, icon, selected} ) => (
+            <ListItem key={txt} disablePadding>
+              <ListItemButton>
                 <ListItemIcon>
-                  {txt === selectedCategory ? selectedIcon : icon}
+                  {{txt} === {selectedCategory} ? selected : icon}
                 </ListItemIcon>
                 <ListItemText primary={txt} />
               </ListItemButton>
@@ -159,8 +177,13 @@ const Header= ({component}) => {
           ))}
         </List>
       </Drawer>
-      
-      <MainArea component={component} open={open}/>
+            
+      {/* main area */}
+      {/* <Main open={open}>
+        <DrawerHeader />
+        {component}
+      </Main>       */}
+      <MainArea/>
     </Box>
   );
 }
