@@ -1,6 +1,7 @@
 import React from 'react'
 import {styled} from '@mui/material/styles';
 import {DrawerHeader} from './index'
+import Feed from '../Feed';
 
 const drawerWidth = 240;
 
@@ -23,12 +24,13 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     }),
   );
 
-const MainArea = ({component, open}) => {
+const MainArea = ({component, open, videos}) => {
   return (
     <Main open={open}>
         <DrawerHeader />
-        {component}
-    </Main>
+        {/* {component} */}
+        <Feed videos = {videos}/>
+      </Main>
   )
 }
 

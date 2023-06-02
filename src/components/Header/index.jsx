@@ -48,10 +48,11 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 const Header= ({component}) => {
-  const [selectedCategory, setSelectedCategory] = useState('Home')
+  const [selectedCategory, setSelectedCategory] = useState('New')
+  const [videos, setVideos] = useState([])
   
   useEffect(()=>{
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then(data => {})
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then(data => setVideos(data.items))
   },[selectedCategory])
 
   const theme = useTheme();
@@ -160,7 +161,7 @@ const Header= ({component}) => {
         </List>
       </Drawer>
       
-      <MainArea component={component} open={open}/>
+      <MainArea component={component} open={open} videos={videos}/>
     </Box>
   );
 }

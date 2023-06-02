@@ -1,17 +1,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Typography,Card, CardContent, CardMedia } from '@mui/material'
-import { CheckCircle } from '@mui/icons-material'
+import { Typography,Card, CardContent, CardMedia, Box, Stack, Avatar } from '@mui/material'
 
-const VideoCard = ({video}) => {
+const VideoCard = ({video: {id: {videoId}, snippet}}) => {
+  console.log(snippet)
   return (
-    <div>
-        <Card>
-            <Link>
-                <CardMedia image=''/>
+    <Box>
+        <Card sx={{boxShadow: 'none',  maxWidth: { xs: '100%', md: "358px" }, boxSizing:'border-box'}}>
+            <Link to = {videoId && `/video/${videoId}`}>
+                <CardMedia image = {snippet?.thumbnails?.high?.url}
+                           alt = {snippet?.title} 
+                           sx = {{width: 358, height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
             </Link>
+
+            <CardContent sx={{height: 106, paddingLeft: 0}} >
+              <Stack direction={'row'} gap={1}>
+                <Avatar alt={snippet?.channelTitle.slice(0,2)} src="/static/images/avatar/1.jpg" /> 
+                <Box>
+                  <Link to = {videoId && `/video/${videoId}`} >
+                    <Typography variant='subtitle1' fontWeight='bold' color='#000' >
+                      {snippet?.title.slice(0,43)}
+                    </Typography>
+                  </Link>
+                  <Link to = {snippet?.channelId && `/channel/${snippet?.channelId}`} >
+                    <Typography variant='subtitle2' color='gray'paddingTop={1} >
+                      {snippet?.channelTitle}
+                    </Typography>
+                  </Link>
+                </Box>
+              </Stack>
+            </CardContent>
         </Card>
-    </div>
+    </Box>
   )
 }
 
