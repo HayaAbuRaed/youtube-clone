@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Typography,Card, CardContent, CardMedia, Box, Stack, Avatar } from '@mui/material'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const VideoCard = ({video: {id: {videoId}, snippet}}) => {
   console.log(snippet)
@@ -25,6 +26,7 @@ const VideoCard = ({video: {id: {videoId}, snippet}}) => {
                   <Link to = {snippet?.channelId && `/channel/${snippet?.channelId}`} >
                     <Typography variant='subtitle2' color='gray'paddingTop={1} >
                       {snippet?.channelTitle}
+                      <CheckCircleIcon sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
                     </Typography>
                   </Link>
                 </Box>

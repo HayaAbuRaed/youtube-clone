@@ -134,7 +134,7 @@ const Header= ({component}) => {
         <List>
           {sidebar.map(({txt, icon, selectedIcon}) => (
             <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => setSelectedCategory(txt)}>
+              <ListItemButton onClick={() => selectedCategory === 'Home' ? setSelectedCategory('new'):setSelectedCategory(txt) }>
                 <ListItemIcon>
                   {
                     txt === selectedCategory ? selectedIcon : icon
