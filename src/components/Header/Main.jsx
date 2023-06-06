@@ -3,6 +3,7 @@ import {styled} from '@mui/material/styles';
 import {DrawerHeader} from './index'
 import Feed from '../Feed';
 import Channel from '../Channel';
+import AfterSearch from '../AfterSearch';
 
 const drawerWidth = 240;
 
@@ -30,8 +31,9 @@ const MainArea = ({component, open, videos}) => {
     <Main open={open}>
         <DrawerHeader />
         {/* {component} */}
-        {/* <Feed videos = {videos} inChannel={true}/> */}
-        <Channel></Channel>
+        {/* <Feed videos = {videos} notInChannel={true}/> */}
+        {/* <Channel/> */}
+        {/* <AfterSearch/> */}
       </Main>
   )
 }
