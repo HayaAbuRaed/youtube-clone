@@ -2,13 +2,14 @@ import React from 'react'
 import {styled} from '@mui/material/styles';
 import {DrawerHeader} from './index'
 import Feed from '../Feed';
+import Channel from '../Channel';
 
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       flexGrow: 1,
-      padding: theme.spacing(3),
+      // padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -29,7 +30,8 @@ const MainArea = ({component, open, videos}) => {
     <Main open={open}>
         <DrawerHeader />
         {/* {component} */}
-        <Feed videos = {videos}/>
+        {/* <Feed videos = {videos} inChannel={true}/> */}
+        <Channel></Channel>
       </Main>
   )
 }
