@@ -4,6 +4,7 @@ import {DrawerHeader} from './index'
 import Feed from '../Feed';
 import Channel from '../Channel';
 import AfterSearch from '../AfterSearch';
+import Video from '../Video';
 
 const drawerWidth = 240;
 
@@ -34,6 +35,7 @@ const MainArea = ({component, open, videos}) => {
         {/* <Feed videos = {videos} notInChannel={true}/> */}
         {/* <Channel/> */}
         {/* <AfterSearch/> */}
+        <Video/>
       </Main>
   )
 }
