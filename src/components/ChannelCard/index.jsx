@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Typography,CardContent, CardMedia, Box, Avatar } from '@mui/material'
+import { Typography,CardContent, CardMedia, Box} from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const ChannelCard = ({channel}) => {
+
+    const linkStyle = {
+      textDecoration: 'none',
+    };
+
     return (
     <Box
       sx={{
@@ -18,7 +23,7 @@ const ChannelCard = ({channel}) => {
       }}
     >
 
-      <Link to={`/channel/${channel?.id?.channelId}`}>
+      <Link to={`/channel/${channel?.id?.channelId}`} style={linkStyle}>
         <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#000' }}>
           <CardMedia
             image={channel?.snippet?.thumbnails?.high?.url}
