@@ -8,13 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import {Link} from 'react-router-dom';
 import logo from '../../assets/logoHalf.png'
-
+import { sidebar, categories } from '..';
 import SearchBar from './SearchBar';
 import IconsNav from './IconsNav';
+import { useState, useEffect } from 'react';
+import { fetchFromAPI } from '../../data';
+import MainArea from './Main';
 
 const drawerWidth = 240;
 
@@ -35,7 +36,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+export const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
@@ -44,31 +45,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  }),
-);
-
-
-
-
 
 
 const Header= ({component}) => {
+  const [selectedCategory, setSelectedCategory] = useState('New')
+  const [videos, setVideos] = useState([])
+  
+  useEffect(()=>{
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then(data => setVideos(data.items))
+  },[selectedCategory])
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -96,7 +82,7 @@ const Header= ({component}) => {
           </IconButton>
 
           {/* LOGO */}
-          <Link to="/" style={{textDecoration:'none', color:'#000'}}>
+          <Link to="/" style={{textDecoration:'none', color:'#000'}} onClick={() => setSelectedCategory('Home')}>
             <Stack direction={'row'} sx={{ marginRight: { xs: 1, sm: 0} }} padding={1}>
               <Typography
               variant="h6"
@@ -142,39 +128,40 @@ const Header= ({component}) => {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
+
         <Divider />
+
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
+          {sidebar.map(({txt, icon, selectedIcon}) => (
+            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
+              <ListItemButton onClick={() => selectedCategory === 'Home' ? setSelectedCategory('new'):setSelectedCategory(txt) }>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {
+                    txt === selectedCategory ? selectedIcon : icon
+                  }
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={txt}/>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
+
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
+          {categories.map(({txt, icon, selectedIcon} ) => (
+            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
+              <ListItemButton onClick={() => setSelectedCategory(txt)}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {txt === selectedCategory ? selectedIcon : icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={txt} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
       </Drawer>
-            
-      {/* main aria */}
-      <Main open={open}>
-        <DrawerHeader />
-        {component}
-      </Main>      
+      
+      <MainArea component={component} open={open} videos={videos}/>
     </Box>
   );
 }
