@@ -4,7 +4,7 @@ import VideoCard from '../VideoCard'
 import ChannelCard from '../ChannelCard'
 
 const Feed = ({videos, notInChannel}) => {
-  console.log(videos)
+  // console.log(videos)
   return (
     <Stack direction="row" flexWrap="wrap" justifyContent="CENTER" gap={2}>
       {
