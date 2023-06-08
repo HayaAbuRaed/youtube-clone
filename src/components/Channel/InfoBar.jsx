@@ -4,12 +4,21 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Notification from '@mui/icons-material/NotificationsNoneOutlined';
 import styled from '@emotion/styled'
 import './master.css'
+import { fetchFromAPI } from '../../data';
+import { useState, useEffect } from 'react';
 
 const StyledTypography = styled(Typography)`
   line-height: 40px
 `;
 
-const InfoBar = ({channel}) => {
+const InfoBar = ({id}) => {
+
+  const [channel, setChannel] = useState("")
+   
+  useEffect(() => {
+    fetchFromAPI(`channels?part=snippet&id=${id}`).then((data)=>setChannel(data?.items[0])); 
+  },[id])
+
   return (
     <div>
         {/* profile picture */}

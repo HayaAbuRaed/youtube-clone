@@ -1,33 +1,22 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Box } from '@mui/material'
-import { fetchFromAPI } from '../../data'
 import './master.css'
 import InfoBar from './InfoBar'
 import Tabs from './Tabs'
 
 const Channel = () => {
-  const [channel, setChannel] = useState("")
-  const [videos, setVideos] = useState([]) 
-  const {id} = useParams();
   
-  // console.log(videos)
-   
-  useEffect(() => {
-    fetchFromAPI(`channels?part=snippet&id=${id}`).then((data)=>setChannel(data?.items[0]));
-    fetchFromAPI(`search?channelId=${id}&part=snippet`).then((data)=>setVideos(data?.items)) 
-  },[id])
-
+  const {id} = useParams();
 
   return (
-    <Box>
+    <Box width={"100vw"}>
       
       <div className='cover'></div>
 
-      <InfoBar channel={channel}></InfoBar>
+      <InfoBar id={id}/>
 
-      <Tabs videos={videos}/>
+      <Tabs id={id} />
 
     </Box>
   )
