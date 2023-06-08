@@ -7,18 +7,9 @@ import TabPanel from '@mui/lab/TabPanel';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeLab from './HomeLab';
 import VideoLab from './VideoLab';
-import { useState, useEffect } from 'react';
-import { fetchFromAPI } from '../../data';
 
-const Tabs = ({id}) => {
-    const [value, setValue] = useState('home');
-    const [videos, setVideos] = useState([])
-  
-  // console.log(videos)
-   
-    useEffect(() => {
-      fetchFromAPI(`search?channelId=${id}&part=snippet`).then((data)=>setVideos(data?.items))  
-      },[id])
+const Tabs = ({videos}) => {
+    const [value, setValue] = React.useState('home');
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
@@ -29,7 +20,7 @@ const Tabs = ({id}) => {
     return (
       <Box sx={{ width: '100%', typography: 'body1' }} >
         <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}  p={"0em "}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}  p={"0em 12vw"}>
             <TabList onChange={handleChange} aria-label="video page lab">
               <Tab label="HOME" value="home" />
               <Tab label="VIDEOS" value="videos" />
@@ -41,7 +32,7 @@ const Tabs = ({id}) => {
               <Tab label={search} value="search" />
             </TabList>
           </Box>
-          <TabPanel value="home"> <HomeLab id = {id}/> </TabPanel>
+          <TabPanel value="home"> <HomeLab videos = {videos}/> </TabPanel>
           <TabPanel value="videos"><VideoLab videos={videos}/></TabPanel>
           <TabPanel value="live">live</TabPanel>
           <TabPanel value="playlist">playlist</TabPanel>
