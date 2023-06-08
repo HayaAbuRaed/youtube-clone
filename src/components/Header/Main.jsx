@@ -33,9 +33,9 @@ const MainArea = ({component, open, videos}) => {
         <DrawerHeader />
         {/* {component} */}
         {/* <Feed videos = {videos} notInChannel={true}/> */}
-        {/* <Channel/> */}
+        <Channel/>
         {/* <AfterSearch/> */}
-        <Video/>
+        {/* <Video/> */}
       </Main>
   )
 }
