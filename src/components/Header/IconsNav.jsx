@@ -17,11 +17,10 @@ const IconsNav = () => {
   };
 
   return (
-    <Stack direction={'row'}>
+    <Stack direction={'row'} color={'#000'}>
             <IconButton
               size="large"
               aria-label="show notifications"
-              color="inherit"
               sx={{padding: {xs: 0.5, sm:1.5}}}
             > 
               <Video />

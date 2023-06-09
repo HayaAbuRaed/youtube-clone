@@ -1,87 +1,38 @@
 import * as React from 'react';
-import {styled, useTheme } from '@mui/material/styles';
-import {Stack, Box, Typography} from '@mui/material';
-import {Drawer, CssBaseline,Toolbar, Divider} from '@mui/material';
-import {List, ListItem,ListItemButton, ListItemIcon , ListItemText} from '@mui/material';
-import MuiAppBar from '@mui/material/AppBar';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {Link} from 'react-router-dom';
-import logo from '../../assets/logoHalf.png'
-import { sidebar, categories } from '..';
-import SearchBar from './SearchBar';
+import { Stack } from '@mui/material';
+import logo from '../../assets/logoHalf.png';
+import { useState } from 'react';
 import IconsNav from './IconsNav';
-import { useState, useEffect } from 'react';
-import { fetchFromAPI } from '../../data';
-import MainArea from './Main';
+import SearchBar from './SearchBar';
+import ListDrawer from './ListDrawer';
+import Feed from '../Feed';
 
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-export const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
-}));
-
-
-
-const Header= ({component}) => {
+const Header = () => {
   const [selectedCategory, setSelectedCategory] = useState('New')
-  const [videos, setVideos] = useState([])
+
+  const [opened, setOpened] = useState(false);
+
+  const toggleDrawer = (open) => {
+    setOpened(open);
+  };
+
+  console.log(opened)
   
-  useEffect(()=>{
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then(data => setVideos(data.items))
-  },[selectedCategory])
-
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <Box sx={{ display: 'flex' }} justifyContent={'space-between'}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#fff', color: '#000'}}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 0, ...(open && { display: 'none' }) }}
-          >
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{backgroundColor: '#fff', color:'#000', boxShadow:'none', borderBottom: '#f1f1f1 solid 1px'}}>
+        <Toolbar variant="dense">
+          <ListDrawer state={opened} toggleDrawer={toggleDrawer}/>
+          <IconButton edge="start" aria-label="menu" sx={{ mr: 2 }} onClick={() => {toggleDrawer(true); console.log("hi")}}>
             <MenuIcon />
           </IconButton>
-
-          {/* LOGO */}
           <Link to="/" style={{textDecoration:'none', color:'#000'}} onClick={() => setSelectedCategory('Home')}>
             <Stack direction={'row'} sx={{ marginRight: { xs: 1, sm: 0} }} padding={1}>
               <Typography
@@ -94,75 +45,17 @@ const Header= ({component}) => {
               <img src={logo} alt="tube" style={{maxWidth: 40}}/>
             </Stack>
           </Link>
-          
           <Box sx={{ flexGrow: 1 }} />
 
           {/* Searchbar */}
           <SearchBar/>
           <Box sx={{ flexGrow: 1 }} />
-          
-          {/* icons nav */}
           <IconsNav/>
-          
-
         </Toolbar>
       </AppBar>
-
-       
-      {/* sidebar */}
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-
-        <Divider />
-
-        <List>
-          {sidebar.map(({txt, icon, selectedIcon}) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => selectedCategory === 'Home' ? setSelectedCategory('new'):setSelectedCategory(txt) }>
-                <ListItemIcon>
-                  {
-                    txt === selectedCategory ? selectedIcon : icon
-                  }
-                </ListItemIcon>
-                <ListItemText primary={txt}/>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-
-        <Divider />
-        <List>
-          {categories.map(({txt, icon, selectedIcon} ) => (
-            <ListItem key={txt} disablePadding sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-              <ListItemButton onClick={() => setSelectedCategory(txt)}>
-                <ListItemIcon>
-                  {txt === selectedCategory ? selectedIcon : icon}
-                </ListItemIcon>
-                <ListItemText primary={txt} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      
-      <MainArea component={component} open={open} videos={videos}/>
+      <Feed ></Feed>
     </Box>
   );
 }
-export default Header;
+
+export default Header

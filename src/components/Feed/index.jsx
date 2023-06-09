@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box , Stack} from '@mui/material'
 import VideoCard from '../VideoCard'
 import ChannelCard from '../ChannelCard'
 
 const Feed = ({videos, notInChannel}) => {
-  // console.log(videos)
+  // const [selectedCategory, setSelectedCategory] = useState('New')
   return (
     <Stack direction="row" flexWrap="wrap" justifyContent="CENTER" gap={2}>
       {
