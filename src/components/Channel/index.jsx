@@ -10,9 +10,9 @@ const Channel = () => {
   const {id} = useParams();
 
   return (
-    <Box width={"100vw"}>
+    <Box>
       
-      <div className='cover'></div>
+      <Box className='cover'></Box>
 
       <InfoBar id={id}/>
 

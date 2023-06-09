@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { Box, CircularProgress, Skeleton, Stack, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import Feed from '../Feed'
 import MainVideo from './MainVideo'
@@ -13,9 +13,15 @@ const HomeLab = ({id}) => {
   useEffect(() => {
     fetchFromAPI(`search?channelId=${id}&part=snippet`).then((data)=>setVideos(data?.items))  
   },[id])
+
   if(videos===null){
-    return <p>ddddddddddd</p>
+    return (
+      <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
+        <CircularProgress color="inherit" /> <Typography ml={'10px'}> Loading... </Typography> 
+      </Box>
+    );
   }
+  
   console.log(videos);
   return (
     <div>
