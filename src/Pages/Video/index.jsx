@@ -1,8 +1,9 @@
 import React from 'react'
+import VideoCmp from '../../components/Video'
 
 const Video = () => {
   return (
-    <div>Video</div>
+    <VideoCmp/>
   )
 }
 

@@ -53,7 +53,6 @@ const Header = () => {
           <IconsNav/>
         </Toolbar>
       </AppBar>
-      <Feed ></Feed>
     </Box>
   );
 }

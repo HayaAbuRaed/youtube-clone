@@ -5,7 +5,7 @@ import Feed from '../../components/Feed'
 const Home = () => {
   return (
     <Box>
-      <Feed></Feed>
+      {/* <Feed></Feed> */}
     </Box>
   )
 }
