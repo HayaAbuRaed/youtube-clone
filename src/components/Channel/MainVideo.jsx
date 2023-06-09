@@ -1,6 +1,22 @@
-import { Box, Divider, Stack, Typography } from '@mui/material'
+import { Box, Divider, Skeleton, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { fetchFromAPI } from '../../data'
+import Player from 'react-player'
+import { Link } from 'react-router-dom';
+
+const brief = {
+    maxHeight:'48%',
+    overflow: "hidden",
+    textOverflow: 'ellipsis',
+    mb: '10px',
+    maxWidth:'700px'
+};
+const linkStyle = {
+    textDecoration: 'none',
+    fontWeight: '700',
+    fontSize: '1.2rem',
+    color: '#000'
+};
 
 const MainVideo = ({id}) => {
     console.log(id);
@@ -10,24 +26,36 @@ const MainVideo = ({id}) => {
         fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
         .then((data) => setVideo(data.items[0]))
     }, [id])
-    
-    console.log(video)
-    if(video===null) return "Loading...";
+ 
+    if(video===null) return <Skeleton variant="rectangular" width={640} height={360} style={{margin:'0 0 2em 5em' }}/>;
+
+    const {statistics: {viewCount}, snippet:{description}} = video
 
         return (
-        <Box p={"0.5em 0 2em 3em"}>
-            <Stack direction={'row'} p={"0 2em"} gap={2}>
-                <div style={{width:'424px', height:'238px', backgroundColor:'#f1f1f1'}}></div>
+        <Box p={"0.5em 0 2em 3em"} >
+            <Stack direction={'row'} p={"0 2em"} gap={3.5} maxHeight={'360px'}>
                 <Box>
-                    <Typography fontWeight={'bold'}>
+                    <Player url={`https://www.youtube.com/watch?v=${id}`} controls />
+                </Box>
+                <Box>
+                    <Typography fontWeight={'bold'} fontSize={'1.5rem'}>
                         {video?.snippet?.title}
                     </Typography>
-                    <Typography>
-                        {parseInt(video?.statistics?.viewCount)}
+
+                    <Typography p={'1.2em 0'}>
+                        {`${parseInt(viewCount).toLocaleString()} Views`}
                     </Typography>
+
+                    <Typography sx={brief}>
+                        {description}
+                    </Typography>
+
+                    <Link to = {id && `/video/${id}`} style={linkStyle}>
+                        Read More
+                    </Link>
                 </Box>
             </Stack>
-            <Divider/>
+            <Divider sx={{mt:3.5}}/>
         </Box>
         
     )

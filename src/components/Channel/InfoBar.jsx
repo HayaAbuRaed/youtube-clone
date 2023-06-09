@@ -20,10 +20,10 @@ const InfoBar = ({id}) => {
   },[id])
 
   return (
-    <div>
+    <Box>
         {/* profile picture */}
       <Stack direction={'row'} padding={'1.5em 2.09em'}>
-        <Box >
+        <Box>
           <img src= {`${channel.snippet?.thumbnails?.high?.url}`} alt= {`${channel.snippet?.title}`} className='channelImg'/>
         </Box>
         <Stack justifyContent={'center'} className='statistics' width={'100%'}>
@@ -63,7 +63,7 @@ const InfoBar = ({id}) => {
           
         </Stack>
       </Stack>
-    </div>
+    </Box>
   )
 }
 
