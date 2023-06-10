@@ -20,7 +20,6 @@ const HomeLab = ({id}) => {
     );
   }
   
-  console.log(videos);
   return (
     <Box>
         <MainVideo id={videos[0]?.id.videoId}/>

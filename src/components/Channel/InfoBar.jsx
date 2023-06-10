@@ -4,8 +4,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Notification from '@mui/icons-material/NotificationsNoneOutlined';
 import styled from '@emotion/styled'
 import './master.css'
-import { fetchFromAPI } from '../../data';
-import { useState, useEffect } from 'react';
 
 const StyledTypography = styled(Typography)`
   line-height: 40px

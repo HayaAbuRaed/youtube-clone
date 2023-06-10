@@ -46,8 +46,8 @@ const Video = () => {
       <Stack direction={{ xs: "column", md: "row" }} gap={8}>
         <Box flex={1}>
           <Box sx={{ width: "100%" }}>
-
             <Player url={`https://www.youtube.com/watch?v=${id}`} controls style={{maxWidth: '100%'}}/>
+
             <Typography variant='h6' m={'1em 0'}>
               {title}
             </Typography>
