@@ -1,8 +1,9 @@
 import React from 'react'
+import ChannelCmp from '../../components/Channel'
 
 const Channel = () => {
   return (
-    <div>Channel</div>
+    <ChannelCmp/>
   )
 }
 

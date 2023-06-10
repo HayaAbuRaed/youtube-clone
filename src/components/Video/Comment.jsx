@@ -15,9 +15,6 @@ const Comment = () => {
         .then((data) => setComments(data.items)) 
     }, [id])
 
-    // if(!comments.snippet) return "Loading..."; 
-    // const { snippet: { topLevelComment: {snippet:{authorDisplayName}}} }= comments;
-
     return (
 
         <Stack direction={'column'}>
@@ -29,7 +26,7 @@ const Comment = () => {
                         <Typography fontWeight={'600'}>
                             {comment.snippet.topLevelComment.snippet.authorDisplayName}
                         </Typography> 
-                        <Typography>
+                        <Typography maxWidth={{xs:'250px', md: '312px'}} maxHeight={'168px'} overflow={'hidden'} textOverflow={'ellipsis'}>
                             {comment.snippet.topLevelComment.snippet.textOriginal}
                         </Typography> 
                         <Stack direction='row' gap={1} pt={1.5} color={'gray'}>

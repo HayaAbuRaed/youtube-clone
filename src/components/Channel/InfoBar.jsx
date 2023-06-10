@@ -9,24 +9,40 @@ const StyledTypography = styled(Typography)`
   line-height: 40px
 `;
 
-const InfoBar = ({channel}) => {
+const TypoStyle = {
+  width: "500px",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: 'ellipsis',
+};
+
+const InfoBar = ({id}) => {
+
+  const [channel, setChannel] = useState("")
+   
+  useEffect(() => {
+    fetchFromAPI(`channels?part=snippet&id=${id}`).then((data)=>setChannel(data?.items[0])); 
+  },[id])
+
   return (
-    <div>
+    <Box>
+      <Stack padding={'1.5em 2.09em'} sx={{flexDirection: {sm: 'column', md: 'row'}}} >
         {/* profile picture */}
-      <Stack direction={'row'} padding={'1.5em 2.09em'}>
-        <Box >
+        <Box>
           <img src= {`${channel.snippet?.thumbnails?.high?.url}`} alt= {`${channel.snippet?.title}`} className='channelImg'/>
         </Box>
+
         <Stack justifyContent={'center'} className='statistics' width={'100%'}>
           
-          <Stack direction={'row'} justifyContent={'space-between'}>
+          <Stack justifyContent={'space-between'} sx={{flexDirection: {sm: 'column', md: 'row'}}}>
             {/* title */}
             <Typography variant="h6">
               {`${channel?.snippet?.title} `}
               <CheckCircleIcon sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
             </Typography>
 
-            <Button variant="contained" startIcon={<Notification />} sx={{backgroundColor: '#f1f1f1', color: 'black', borderRadius: '50px'}}>
+            <Button variant="contained" startIcon={<Notification />} 
+            sx={{backgroundColor: '#f1f1f1', color: 'black', borderRadius: '50px', maxWidth: '130px', margin:{xs: '1em 0', md:'0'}}} >
               Subscribe
             </Button>
           </Stack>
@@ -47,14 +63,14 @@ const InfoBar = ({channel}) => {
             
           </StyledTypography> 
 
-          <Typography className='description'> 
+          <Typography className='description' sx={TypoStyle}> 
             {/* description */}
             {`${channel?.snippet?.description}`}
           </Typography> 
           
         </Stack>
       </Stack>
-    </div>
+    </Box>
   )
 }
 

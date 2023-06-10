@@ -7,9 +7,10 @@ import TabPanel from '@mui/lab/TabPanel';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeLab from './HomeLab';
 import VideoLab from './VideoLab';
+import { useState} from 'react';
 
-const Tabs = ({videos}) => {
-    const [value, setValue] = React.useState('home');
+const Tabs = ({id}) => {
+    const [value, setValue] = useState('home');
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
@@ -18,10 +19,11 @@ const Tabs = ({videos}) => {
     const search = <SearchIcon/>
   
     return (
-      <Box sx={{ width: '100%', typography: 'body1' }} >
+      <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}  p={"0em 12vw"}>
-            <TabList onChange={handleChange} aria-label="video page lab">
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}  m={{xs:"0", md:"0 3em 0 5.71em "}}>
+            <TabList onChange={handleChange} aria-label="channel page labs" >
+              {/* {tabs.map((e)=> <Tab label={e} value={e} />)} */}
               <Tab label="HOME" value="home" />
               <Tab label="VIDEOS" value="videos" />
               <Tab label="LIVE" value="live" />
@@ -32,8 +34,8 @@ const Tabs = ({videos}) => {
               <Tab label={search} value="search" />
             </TabList>
           </Box>
-          <TabPanel value="home"> <HomeLab videos = {videos}/> </TabPanel>
-          <TabPanel value="videos"><VideoLab videos={videos}/></TabPanel>
+          <TabPanel value="home"> <HomeLab id = {id}/> </TabPanel>
+          <TabPanel value="videos"><VideoLab id={id}/></TabPanel>
           <TabPanel value="live">live</TabPanel>
           <TabPanel value="playlist">playlist</TabPanel>
           <TabPanel value="community">community</TabPanel>

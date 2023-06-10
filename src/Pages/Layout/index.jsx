@@ -6,7 +6,10 @@ import { Outlet } from 'react-router-dom'
 const layout = () => {
   return (
     <Box>
-      <Header component={<Outlet/>}/>
+      <Header/>
+      <Box mt={'6.5em'}>
+        <Outlet/>
+      </Box>
     </Box>
   )
 }

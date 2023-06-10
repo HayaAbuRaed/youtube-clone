@@ -1,4 +1,6 @@
-import {Home, HomeOutlined, Explore, ExploreOutlined,Subscriptions, SubscriptionsOutlined, Code, CodeOutlined, Gamepad, GamepadOutlined} from '@mui/icons-material';
+import {Home, HomeOutlined, Explore, ExploreOutlined,Subscriptions, SubscriptionsOutlined, 
+        Code, CodeOutlined, Gamepad, GamepadOutlined, LocalLibrary, LocalLibraryOutlined,
+        Mosque, MosqueOutlined} from '@mui/icons-material';
 
 export {default as Layout} from'../Pages/Layout'
 export {default as Home} from'../Pages/Home'
@@ -34,5 +36,15 @@ export const categories =[
         txt: 'Gaming',
         icon: <GamepadOutlined/>,
         selectedIcon: <Gamepad/>
+    },
+    {
+        txt: 'Education',
+        icon: <LocalLibraryOutlined/>,
+        selectedIcon: <LocalLibrary/>
+    },
+    {
+        txt: 'Islamic',
+        icon: <MosqueOutlined/>,
+        selectedIcon: <Mosque/>
     },
 ]
