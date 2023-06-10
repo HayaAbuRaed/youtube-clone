@@ -1,19 +1,13 @@
 import { Divider, Drawer, List } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useContext} from 'react'
 import ListItems from './ListItems'
 import { sidebar, categories } from '..';
-import { fetchFromAPI } from '../../data';
+import { CategoryContext } from '../Context/CategoryProvider';
 
 const ListDrawer = ({state, toggleDrawer}) => {
-  const [selectedCategory, setSelectedCategory] = useState('New')
-  const [videos, setVideos] = useState([])
   
-  useEffect(()=>{
-    let category = selectedCategory;
-    if(category === "Home") category = "new"
-    else if(category === "Explore") category = "trending"
-    fetchFromAPI(`search?part=snippet&q=${category}`).then(data => setVideos(data.items))
-    },[selectedCategory])
+  const {selectedCategory, setSelectedCategory} = useContext(CategoryContext)
+
   return (
  
           <Drawer

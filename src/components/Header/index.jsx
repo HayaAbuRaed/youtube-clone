@@ -12,12 +12,14 @@ import { useState } from 'react';
 import IconsNav from './IconsNav';
 import SearchBar from './SearchBar';
 import ListDrawer from './ListDrawer';
-import Feed from '../Feed';
+import { useContext } from 'react';
+import { CategoryContext } from '../Context/CategoryProvider';
 
 const Header = () => {
-  const [selectedCategory, setSelectedCategory] = useState('New')
-
+  
   const [opened, setOpened] = useState(false);
+  
+  const {setSelectedCategory} = useContext(CategoryContext)
 
   const toggleDrawer = (open) => {
     setOpened(open);
@@ -30,9 +32,10 @@ const Header = () => {
       <AppBar position="static" sx={{backgroundColor: '#fff', color:'#000', boxShadow:'none', borderBottom: '#f1f1f1 solid 1px'}}>
         <Toolbar variant="dense">
           <ListDrawer state={opened} toggleDrawer={toggleDrawer}/>
-          <IconButton edge="start" aria-label="menu" sx={{ mr: 2 }} onClick={() => {toggleDrawer(true); console.log("hi")}}>
+          <IconButton edge="start" aria-label="menu" sx={{ mr: 2 }} onClick={() => {toggleDrawer(true)}}>
             <MenuIcon />
           </IconButton>
+          {/* logo */}
           <Link to="/" style={{textDecoration:'none', color:'#000'}} onClick={() => setSelectedCategory('Home')}>
             <Stack direction={'row'} sx={{ marginRight: { xs: 1, sm: 0} }} padding={1}>
               <Typography
