@@ -1,6 +1,6 @@
 import { Divider, Drawer, List } from '@mui/material'
 import React, { useContext} from 'react'
-import ListItems from './ListItems'
+import DrawerItem from './DrawerItem'
 import { sidebar, categories } from '..';
 import { CategoryContext } from '../Context/CategoryProvider';
 
@@ -16,14 +16,14 @@ const ListDrawer = ({state, toggleDrawer}) => {
           >
             <List>
             {sidebar.map((item) => (
-              <ListItems item = {item} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
+              <DrawerItem item = {item} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
             ))}
           </List>
 
           <Divider />
           <List>
             {categories.map((category) => (
-              <ListItems item = {category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
+              <DrawerItem item = {category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
             ))}
           </List>
         </Drawer>

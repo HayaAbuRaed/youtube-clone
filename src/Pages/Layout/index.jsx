@@ -7,7 +7,9 @@ const layout = () => {
   return (
     <Box>
       <Header/>
-      <Outlet/>
+      <Box mt={'6.5em'}>
+        <Outlet/>
+      </Box>
     </Box>
   )
 }

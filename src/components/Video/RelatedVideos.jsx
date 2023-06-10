@@ -19,7 +19,7 @@ const RelatedVideo = ({video: {id: {videoId}, snippet}}) => {
             <Link to = {videoId && `/video/${videoId}`}>
                 <CardMedia image = {snippet?.thumbnails?.high?.url}
                            alt = {snippet?.title} 
-                           sx = {{width: 358, height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
+                           sx = {{maxWidth: 358,width: '100%', height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
             </Link>
         </Card>
         <Stack>

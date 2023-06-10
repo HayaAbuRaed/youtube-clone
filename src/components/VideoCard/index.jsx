@@ -22,14 +22,14 @@ const VideoCard = ({video: {id: {videoId}, snippet}, notInChannel}) => {
   
   return (
     <Box>
-        <Card sx={{ boxShadow: 'none',  maxWidth: { xs: '100%', md: "358px" }, boxSizing:'border-box'}}>
+        <Card sx={{ boxShadow: 'none',  width: { xs: '100%', md: "358px" }, boxSizing:'border-box'}}>
             <Link to = {videoId && `/video/${videoId}`}>
                 <CardMedia image = {snippet?.thumbnails?.high?.url}
                            alt = {snippet?.title} 
-                           sx = {{width: 358, height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
+                           sx = {{maxWidth: 358, width: '100%', height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
             </Link>
 
-            <CardContent sx={{height: 106, paddingLeft: 0}} >
+            <CardContent sx={{maxHeight: 106, paddingLeft: 0}} >
               <Stack direction={'row'} gap={1.7}>
                 {notInChannel && <Avatar alt={snippet?.channelTitle.slice(0,2)} src="/static/images/avatar/1.jpg" /> }
                 <Box>

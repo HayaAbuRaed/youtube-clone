@@ -27,15 +27,19 @@ const MainVideo = ({id}) => {
         .then((data) => setVideo(data.items[0]))
     }, [id])
  
-    if(video===null) return <Skeleton variant="rectangular" width={640} height={360} style={{margin:'0 0 2em 5em' }}/>;
-
+    if(video===null) return (
+        <Box p={"0.5em 0 2em 3em"} >
+            <Skeleton variant="rectangular" width={'100%'} height={'360px'} sx={{margin:'0 0 2em 5em', maxHeight: '360px' }}/>
+        </Box>
+    )
+    
     const {statistics: {viewCount}, snippet:{description}} = video
 
         return (
-        <Box p={"0.5em 0 2em 3em"} >
-            <Stack direction={'row'} p={"0 2em"} gap={3.5} maxHeight={'360px'}>
-                <Box>
-                    <Player url={`https://www.youtube.com/watch?v=${id}`} controls />
+        <Box p={{xs:"0", md:"0.5em 0 2em 3em"}} >
+            <Stack p={{xs:"0", md:"0 2em"}} gap={3.5}  sx={{flexDirection: {sm: 'column', md: 'row'}, maxHeight: {sm: '100%', md: '360px'}}}>
+                <Box width='100%' maxWidth={'640px'}>
+                    <Player url={`https://www.youtube.com/watch?v=${id}`} controls width={'100%'} style={{minWidth: '100px'}}/>
                 </Box>
                 <Box>
                     <Typography fontWeight={'bold'} fontSize={'1.5rem'}>

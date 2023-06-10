@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Divider, Skeleton, Stack, Typography } from '@mui/material'
+import { Box, Divider, Skeleton, Stack, Typography, Button } from '@mui/material'
 import Player from 'react-player'
 import { Link, useParams } from 'react-router-dom'
 import { fetchFromAPI } from '../../data'
@@ -11,6 +11,11 @@ import Comment from './Comment'
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
   "July", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
+
+const TypoStyle = {
+  overflow: "hidden",
+  textOverflow: 'ellipsis',
+};
 
 const Video = () => {
   const [video, setVideo] = useState('')
@@ -66,7 +71,7 @@ const Video = () => {
               </Typography>
             </Link>
 
-            <Typography m={'1em 0'}>
+            <Typography m={'1em 0'} sx={TypoStyle}>
               {description}
             </Typography>
 
@@ -83,7 +88,7 @@ const Video = () => {
 
         <Stack direction="column" flexWrap="wrap" gap={2}>
           <Stack direction='row' pl={'1.5em'}>
-            <button style={{borderRadius:'50px', width: '50px', borderColor:'#fff'}}>All</button>  
+          <Button size="small" variant="contained" disabled="true" style={{ backgroundColor: '#e6e6fa',borderRadius:'20px', color:'#696969'}}>All</Button>  
           </Stack>
           {videos ? 
           videos.map((item, index) => (

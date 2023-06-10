@@ -12,7 +12,7 @@ const Channel = () => {
   return (
     <Box>
       
-      <Box className='cover'></Box>
+      <Box className='cover' mt={'-6.5em'}></Box>
 
       <InfoBar id={id}/>
 

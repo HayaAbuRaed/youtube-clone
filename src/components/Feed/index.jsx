@@ -5,7 +5,7 @@ import ChannelCard from '../ChannelCard'
 import { fetchFromAPI } from '../../data'
 import { CategoryContext } from '../Context/CategoryProvider'
 
-const Feed = ({id, notInChannel}) => {
+const Feed = ({notInChannel=true}) => {
   const [videos, setVideos] = useState([]);
 
   const {selectedCategory} = useContext(CategoryContext)
@@ -15,11 +15,12 @@ const Feed = ({id, notInChannel}) => {
     let category = selectedCategory
     if(category === "Home") category = "new"
     else if(category === "Explore") category = "trending"
+    else if(category === "Islamic") category = "Holy Quran"
     fetchFromAPI(`search?part=snippet&q=${category}`).then(data => setVideos(data.items))
   },[selectedCategory])
 
   return (
-    <Stack direction="row" flexWrap="wrap" justifyContent="CENTER" gap={2}>
+    <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={3} m={'0 2em'}>
       {
       videos.map((item, index) => (
         <Box key={index}>

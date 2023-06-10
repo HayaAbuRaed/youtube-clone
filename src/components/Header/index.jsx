@@ -29,7 +29,7 @@ const Header = () => {
   
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{backgroundColor: '#fff', color:'#000', boxShadow:'none', borderBottom: '#f1f1f1 solid 1px'}}>
+      <AppBar position="fixed" sx={{backgroundColor: '#fff', color:'#000', boxShadow:'none', borderBottom: '#f1f1f1 solid 1px',  minHeight:'55px'}} >
         <Toolbar variant="dense">
           <ListDrawer state={opened} toggleDrawer={toggleDrawer}/>
           <IconButton edge="start" aria-label="menu" sx={{ mr: 2 }} onClick={() => {toggleDrawer(true)}}>
@@ -52,8 +52,12 @@ const Header = () => {
 
           {/* Searchbar */}
           <SearchBar/>
+
           <Box sx={{ flexGrow: 1 }} />
+
+          {/* Nav */}
           <IconsNav/>
+          
         </Toolbar>
       </AppBar>
     </Box>

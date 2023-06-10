@@ -3,7 +3,7 @@ import InputBase from '@mui/material/InputBase';
 import {styled} from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, IconButton, Paper } from '@mui/material';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 const search = {
@@ -11,7 +11,7 @@ const search = {
     borderRadius: '100px',
     backgroundColor: 'white',
     '&:hover': {
-      backgroundColor: 'white',
+      backgroundColor: '#f1f1f1',
     },
     marginRight: '20px',
     marginLeft: 1,
@@ -35,8 +35,9 @@ const search = {
   };
 
 const SearchBar = () => {
-    const [screenSize, setScreenSize] = useState('xs');
+    
     const [searchResult, setSearchResult] = useState('');
+    
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -48,35 +49,15 @@ const SearchBar = () => {
         setSearchResult('');
       }
     };
-
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(min-width: 600px)');
-    
-        function handleMediaQueryChange(e) {
-          if (e.matches) {
-            setScreenSize('sm');
-          } else {
-            setScreenSize('xs');
-          }
-        }
-    
-        handleMediaQueryChange(mediaQuery);
-        mediaQuery.addListener(handleMediaQueryChange);
-    
-        return () => {
-          mediaQuery.removeListener(handleMediaQueryChange);
-        };
-      }, []);
          
   return (
     <Box>
-        { (screenSize === 'xs') ?
-        <Box display={'flex'} width={'100%'}>
-            <Box sx={{ flexGrow: 1 }}/>  
-            <SearchIcon /> 
+        
+        <Box display={'flex'} width={'100%'} sx={{display:{xs:'flex', sm:'none'}}}>
+            <SearchIcon style={{marginLeft:'5em'}}/> 
         </Box> 
-        :
-        <Box>
+        
+        <Box sx={{display:{xs:'none', sm:'block'}}}>
             <Paper sx={search} component='form' onSubmit={handleSubmit}>
                 <SearchIconWrapper>
                 <IconButton type='submit' sx={{ p: '10px', color: 'f1f1f1' }} aria-label='search'>
@@ -94,7 +75,7 @@ const SearchBar = () => {
             </Paper>
             {/* <Box sx={{ flexGrow: 1 }} /> */}
         </Box>
-    }
+    
   </Box>
   )
 }

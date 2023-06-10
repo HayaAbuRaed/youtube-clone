@@ -17,7 +17,7 @@ const IconsNav = () => {
   };
 
   return (
-    <Stack direction={'row'} color={'#000'}>
+    <Stack direction={'row'} color={'#000'} sx={{display: {xs: 'none', sm: 'flex'}}}>
             <IconButton
               size="large"
               aria-label="show notifications"
@@ -40,7 +40,7 @@ const IconsNav = () => {
             <Box sx={{ flexGrow: 0 }} display={'flex'} alignItems={'center'} padding={1}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} >
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{maxWidth: 35, maxHeight:35}}/>
+                  <Avatar alt="Haya" src="../" sx={{maxWidth: 35, maxHeight:35}}/>
                 </IconButton>
               </Tooltip>
               <Menu
