@@ -6,7 +6,7 @@
 
 .channelImg{
     border-radius: 50%; 
-    height: 128px; 
+    /* height: 128px;  */
     width: 128px; 
     border: 1px solid #fff;
     margin-right: 1em
@@ -20,4 +20,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.sub-btn{
+    background-color: #f1f1f1 ; 
+    color: black; 
+    border-radius: 50px; 
+    max-width: 130px
 }

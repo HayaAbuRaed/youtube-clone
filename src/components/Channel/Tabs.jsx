@@ -22,8 +22,9 @@ const Tabs = ({id}) => {
     return (
       <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}  m={"0 3em 0 5.71em "}>
-            <TabList onChange={handleChange} aria-label="video page lab" >
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}  m={{xs:"0", md:"0 3em 0 5.71em "}}>
+            <TabList onChange={handleChange} aria-label="channel page labs" >
+              {/* {tabs.map((e)=> <Tab label={e} value={e} />)} */}
               <Tab label="HOME" value="home" />
               <Tab label="VIDEOS" value="videos" />
               <Tab label="LIVE" value="live" />
