@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import {Layout, Home, Video, Channel, AfterSearch} from './components'
 import Box from '@mui/material/Box';
 import CategoryProvider from './components/Context/CategoryProvider';
+import Error from './Pages/Error/Error';
  
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
               <Route  path="/video/:id" element={<Video/>}/>
               <Route  path="/channel/:id" element={<Channel/>}/>
               <Route  path="/search/:searchResult" element={<AfterSearch/>}/>
-              <Route  path="*" element={<> error 404 page not found </>}/>
+              <Route  path="*" element={<Error/>}/>
             </Route>
           </Routes>
         </BrowserRouter>
