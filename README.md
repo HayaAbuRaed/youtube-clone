@@ -21,7 +21,7 @@ This project aims to replicate the core functionality and user experience of You
 ### API integration <br/>
 <a href="https://rapidapi.com/ytdlfree/api/youtube-v31" target="blank"> RapidAPI YouTube v3 </a> <br/>  <br/>
 <img align= "center" src="https://github.com/HayaAbuRaed/youtube-clone/assets/123592435/7bd20aee-0576-43ca-9119-122660891f07" width="130">
-<br/><br/>
+<br/><br/><br/>
 
 ## 🚀 Usage
 #### To run this project in your local device: <br>
