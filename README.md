@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# YouTube Clone Project - VibeTube
+Hi there! Welcome to my YouTube Clone project which I call VibeTube. 
+This project aims to replicate the core functionality and user experience of YouTube, a popular video-sharing platform. With this clone, you can explore, search, and watch videos just like you would on the original YouTube website.
+<br/> <br/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+	<img align= "center" src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Youtube_2018.gif" width="270">
+<br/>  
+</div><br/>
 
-## Available Scripts
+## 💻 Technologies Used
+### For building the UI and styling the application
+<img align= "center" src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png" width="150"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/120px-CSS3_logo_and_wordmark.svg.png" alt="css3" width="50"/>
+<br/> <br/>
 
-In the project directory, you can run:
+### UI Kit  <br/>
+<img align= "center" src="https://lembergsolutions.com/sites/default/files/styles/original_size_pdf_compressed_/public/media/images/Material%20UI%20Logo.png?itok=FgZS2KJD" width="150">
+<br/>
 
-### `npm start`
+### API integration <br/>
+<a href="https://rapidapi.com/ytdlfree/api/youtube-v31" target="blank"> RapidAPI YouTube v3 </a> <br/>  <br/>
+<img align= "center" src="https://github.com/HayaAbuRaed/youtube-clone/assets/123592435/7bd20aee-0576-43ca-9119-122660891f07" width="130">
+<br/><br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Usage
+#### To run this project in your local device: <br>
+• Clone the project's </a> repository: git clone https://github.com/HayaAbuRaed/youtube-clone <br/>
+• Navigate to the project directory: cd youtube-clone <br/>
+• Install the dependencies: npm i <br/>
+• Start the development server: npm start <br/>
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⭐ Features and Functionalities
+### • View new videos and navigate through the different categories <br/>
 
-### `npm test`
+https://github.com/HayaAbuRaed/youtube-clone/assets/123592435/c9600227-edfc-4f0a-85b6-922d87c74f45
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/><br/>
 
-### `npm run build`
+### • Search for videos by keywords or phrases. <br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://github.com/HayaAbuRaed/youtube-clone/assets/123592435/069207da-a449-4290-a45f-f7a9985da93f
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/><br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### • Watch videos with a user-friendly video player (I used react-player library).
+### • View video details such as title, description, views and likes.
+### • View video comments details such as content, commenter, likes and dislikes.
+### • Discover related videos based on your current video selection. <br/>
 
-### `npm run eject`
+https://github.com/HayaAbuRaed/youtube-clone/assets/123592435/5bab77bb-803b-495d-8705-f653e6fbc2a3
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br/><br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### • View channel's video details such as title, description, videos count and view its video's.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+https://github.com/HayaAbuRaed/youtube-clone/assets/123592435/c60f0ac6-6b36-4075-817b-c32034701eda
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br/><br/>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div align="center">
+	✨ I'll be glad seeing your feedback, feel free to reach out! ✨
+</div>
