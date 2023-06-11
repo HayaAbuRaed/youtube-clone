@@ -32,6 +32,7 @@ This project aims to replicate the core functionality and user experience of You
 <br/>
 __OR__ visit <a href="https://zippy-crisp-5d73cb.netlify.app/"> this deployment link </a> 
 
+<br/><br/>
 ## ⭐ Features and Functionalities
 ### • View new videos and navigate through the different categories <br/>
 
