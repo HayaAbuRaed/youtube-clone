@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d9aede04-e02a-4666-b15b-df68a0c08087/deploy-status)](https://app.netlify.com/sites/zippy-crisp-5d73cb/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/14864b53-5214-4525-94a1-656eb6724e04/deploy-status)](https://app.netlify.com/sites/splendorous-cannoli-7bcac8/deploys)
 # YouTube Clone Project - VibeTube
 Hi there! Welcome to my YouTube Clone project which I call VibeTube. 
 This project aims to replicate the core functionality and user experience of YouTube, a popular video-sharing platform. With this clone, you can explore, search, and watch videos just like you would on the original YouTube website.
@@ -30,7 +30,7 @@ This project aims to replicate the core functionality and user experience of You
 • Install the dependencies: npm i <br/>
 • Start the development server: npm start <br/>
 <br/>
-__OR__ visit <a href="https://zippy-crisp-5d73cb.netlify.app/"> this deployment link </a> 
+__OR__ visit <a href="https://splendorous-cannoli-7bcac8.netlify.app/"> this deployment link </a> 
 
 <br/><br/>
 ## ⭐ Features and Functionalities
