@@ -16,14 +16,14 @@ const ListDrawer = ({state, toggleDrawer}) => {
           >
             <List>
             {sidebar.map((item) => (
-              <DrawerItem item = {item} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
+              <DrawerItem key={item.txt} item = {item} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
             ))}
           </List>
 
           <Divider />
           <List>
             {categories.map((category) => (
-              <DrawerItem item = {category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
+              <DrawerItem key={category.txt} item = {category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} toggleDrawer={toggleDrawer}/>
             ))}
           </List>
         </Drawer>

@@ -11,15 +11,16 @@ const search = {
     borderRadius: '100px',
     backgroundColor: 'white',
     '&:hover': {
-      backgroundColor: '#f1f1f1',
+      backgroundColor: '#f6f6f6',
     },
     marginRight: '20px',
     marginLeft: 1,
     border: '#909090 1px solid',
+    boxShadow: 'none'
   };
   
   const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(0, 0.45),
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -30,7 +31,7 @@ const search = {
   
   const StyledInputBase = {
     color: 'inherit',
-    paddingLeft: `calc(1em + 40px)`,
+    paddingLeft: `calc(1em + 30px)`,
     width: '100%',
   };
 
@@ -73,7 +74,6 @@ const SearchBar = () => {
                 onChange={(e) => setSearchResult(e.target.value)}
                 />
             </Paper>
-            {/* <Box sx={{ flexGrow: 1 }} /> */}
         </Box>
     
   </Box>

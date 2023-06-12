@@ -12,7 +12,9 @@ const CategoryProvider = ({children}) => {
     }
     
     return (
-        <CategoryContext.Provider value={value}>{children}</CategoryContext.Provider>
+        <CategoryContext.Provider value={value}>
+            {children}
+        </CategoryContext.Provider>
     )
 }
 

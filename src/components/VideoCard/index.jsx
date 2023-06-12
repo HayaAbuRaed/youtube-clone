@@ -4,8 +4,6 @@ import { Typography,Card, CardContent, CardMedia, Box, Stack, Avatar } from '@mu
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const VideoCard = ({video: {id: {videoId}, snippet}, notInChannel}) => {
-  
-  console.log(snippet)
 
   const linkStyle = {
     textDecoration: 'none',

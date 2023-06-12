@@ -2,11 +2,22 @@ import React from 'react'
 import { Avatar, Stack, Tooltip , Typography, Menu, MenuItem, Badge, IconButton, Box } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import Video from '@mui/icons-material/VideoCallOutlined';
+import { UserAuth } from '../Context/AuthProvider';
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Account', 'Dashboard'];
 
-const IconsNav = () => {
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+const IconsNav = ({name}) => {
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const {user, logOut} = UserAuth()
+
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -17,7 +28,7 @@ const IconsNav = () => {
   };
 
   return (
-    <Stack direction={'row'} color={'#000'} sx={{display: {xs: 'none', sm: 'flex'}}}>
+    <Stack direction={'row'} color={'#000'}>
             <IconButton
               size="large"
               aria-label="show notifications"
@@ -40,7 +51,7 @@ const IconsNav = () => {
             <Box sx={{ flexGrow: 0 }} display={'flex'} alignItems={'center'} padding={1}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} >
-                  <Avatar alt="Haya" src="../" sx={{maxWidth: 35, maxHeight:35}}/>
+                  <Avatar alt={user?.displayName} src={user?.photoURL} sx={{maxWidth: 35, maxHeight:35}}/>
                 </IconButton>
               </Tooltip>
               <Menu
@@ -64,6 +75,9 @@ const IconsNav = () => {
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
+                <MenuItem key={"Log out"} onClick={handleCloseUserMenu} onClickCapture={handleLogOut}>
+                  <Typography textAlign="center">Log out</Typography>
+                </MenuItem>
               </Menu>
             </Box>
             

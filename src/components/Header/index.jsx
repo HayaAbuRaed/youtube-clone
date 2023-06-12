@@ -12,8 +12,10 @@ import { useState } from 'react';
 import IconsNav from './IconsNav';
 import SearchBar from './SearchBar';
 import ListDrawer from './ListDrawer';
+import SignIn from './SignIn' 
 import { useContext } from 'react';
 import { CategoryContext } from '../Context/CategoryProvider';
+import { UserAuth } from '../Context/AuthProvider';
 
 const Header = () => {
   
@@ -21,11 +23,11 @@ const Header = () => {
   
   const {setSelectedCategory} = useContext(CategoryContext)
 
+  const {user} = UserAuth()
+
   const toggleDrawer = (open) => {
     setOpened(open);
   };
-
-  console.log(opened)
   
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -56,7 +58,11 @@ const Header = () => {
           <Box sx={{ flexGrow: 1 }} />
 
           {/* Nav */}
-          <IconsNav/>
+
+          <Box sx={{display: {xs: 'none', sm: 'flex'}}}>
+            {user?.displayName ? <IconsNav/> : <SignIn/>}
+          </Box>
+          
           
         </Toolbar>
       </AppBar>
