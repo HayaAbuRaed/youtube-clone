@@ -32,9 +32,9 @@ const Video = () => {
   }, [id])
 
   if(!video?.snippet) return <Skeleton
-  sx={{ bgcolor: 'grey.900', m: '2.5em'}}
+  sx={{ bgcolor: 'grey.900', m: '2.5em', maxWidth: '640px', boxSizing: 'border-box'}}
   variant="rectangular"
-  width={733.6}
+  width={'100%'}
   height={360}
 />;
 
@@ -46,7 +46,7 @@ const Video = () => {
       <Stack direction={{ xs: "column", md: "row" }} gap={8}>
         <Box flex={1}>
           <Box sx={{ width: "100%" }}>
-            <Player url={`https://www.youtube.com/watch?v=${id}`} controls style={{maxWidth: '100%'}}/>
+            <Player url={`https://www.youtube.com/watch?v=${id}`} controls style={{maxWidth:'100%'}}/>
 
             <Typography variant='h6' m={'1em 0'}>
               {title}

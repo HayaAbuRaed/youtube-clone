@@ -11,13 +11,6 @@ const StyledTypography = styled(Typography)`
   line-height: 40px
 `;
 
-const TypoStyle = {
-  width: "500px",
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-  textOverflow: 'ellipsis',
-};
-
 const InfoBar = ({id}) => {
 
   const [channel, setChannel] = useState("")
@@ -65,8 +58,8 @@ const InfoBar = ({id}) => {
             
           </StyledTypography> 
 
-          <Typography className='description' sx={TypoStyle}> 
-            {/* description */}
+          {/* description */}
+          <Typography className='description' width={{xs:'230px', sm:'650px'}}> 
             {`${channel?.snippet?.description}`}
           </Typography> 
           

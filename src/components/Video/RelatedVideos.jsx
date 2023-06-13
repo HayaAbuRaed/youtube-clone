@@ -8,10 +8,6 @@ const RelatedVideo = ({video: {id: {videoId}, snippet}}) => {
   const linkStyle = {
     textDecoration: 'none'
   };
-
-  const TypoStyle = {
-    color: '#000'
-  };
   
   return (
     <Stack gap={2} direction={{ xs: 'column', lg: 'row' }} p={'0.5em'}>
@@ -25,7 +21,7 @@ const RelatedVideo = ({video: {id: {videoId}, snippet}}) => {
         <Stack>
             {/* title */}
             <Link to = {videoId && `/video/${videoId}`} style={linkStyle}>
-                <Typography variant='subtitle' sx={TypoStyle}>
+                <Typography variant='subtitle' color={'#000'}>
                     {snippet?.title}
                 </Typography>
             </Link>
