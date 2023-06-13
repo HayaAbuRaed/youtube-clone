@@ -6,12 +6,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CategoryProvider from './components/Context/CategoryProvider';
 import AuthProvider from './components/Context/AuthProvider';
+import XsSearchProvider from './components/Context/XsSearchProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <CategoryProvider>
     <AuthProvider>
-      <App />
+      <XsSearchProvider>
+        <App />
+      </XsSearchProvider>
     </AuthProvider>
   </CategoryProvider>
 );

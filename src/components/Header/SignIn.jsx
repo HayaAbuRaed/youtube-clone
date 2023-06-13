@@ -20,7 +20,7 @@ const SignIn = () => {
         if (user != null) {
           navigate('/');
         }
-      }, [user]);
+      }, [user, navigate]);
 
     return (
         <>

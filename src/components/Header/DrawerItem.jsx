@@ -11,7 +11,7 @@ const DrawerItem = ({item:{txt, icon, selectedIcon}, selectedCategory, setSelect
     };
   return (
     <ListItem sx={{backgroundColor : (txt === selectedCategory) && '#F1F1F1', borderRadius: 10}}>
-        <ListItemButton onClick={() => {setSelectedCategory(txt, toggleDrawer(false)); handleClick()} }>
+        <ListItemButton onClick={() => {setSelectedCategory(txt); toggleDrawer(false); handleClick()} }>
         <ListItemIcon>
             {
             txt === selectedCategory ? selectedIcon : icon

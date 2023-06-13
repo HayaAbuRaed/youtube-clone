@@ -8,24 +8,20 @@ const RelatedVideo = ({video: {id: {videoId}, snippet}}) => {
   const linkStyle = {
     textDecoration: 'none'
   };
-
-  const TypoStyle = {
-    color: '#000'
-  };
   
   return (
     <Stack gap={2} direction={{ xs: 'column', lg: 'row' }} p={'0.5em'}>
-        <Card sx={{ boxShadow: 'none',  minWidth: { xs: '100%', md: "358px" }, boxSizing:'border-box'}}>
+        <Card sx={{ boxShadow: 'none',  minWidth: { xs: '100%', md: "250px" }, boxSizing:'border-box'}}>
             <Link to = {videoId && `/video/${videoId}`}>
                 <CardMedia image = {snippet?.thumbnails?.high?.url}
                            alt = {snippet?.title} 
-                           sx = {{maxWidth: 358,width: '100%', height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
+                           sx = {{maxWidth: 250,width: '100%', height: 140, border:'solid 1px #fff', borderRadius: '10px'}} />            
             </Link>
         </Card>
         <Stack>
             {/* title */}
             <Link to = {videoId && `/video/${videoId}`} style={linkStyle}>
-                <Typography variant='subtitle' sx={TypoStyle}>
+                <Typography variant='subtitle' color={'#000'}>
                     {snippet?.title}
                 </Typography>
             </Link>

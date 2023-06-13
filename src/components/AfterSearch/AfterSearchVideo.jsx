@@ -13,16 +13,19 @@ const ResultVideo = ({video: {id: {videoId}, snippet}}) => {
 
   const TypoStyle = {
     color: '#000',
-    fontSize:'1.3rem'
+    fontSize:'1.3rem',
+    width: {xs:'240px', sm:'500px', md: '420px', lg:'100%'},
+    overflow: "hidden",
+    textOverflow: 'ellipsis',
   };
   
   return (
-    <Stack gap={2} direction={{ xs: 'column', lg: 'row' }} p={'1.5em'}>
+    <Stack gap={2} direction={{ xs: 'column', md: 'row' }} p={'0 1.75em 2em 0'} width={'100%'}>
         <Card sx={{ boxShadow: 'none',  minWidth: { xs: '100%', md: "358px" }, boxSizing:'border-box'}}>
             <Link to = {videoId && `/video/${videoId}`}>
                 <CardMedia image = {snippet?.thumbnails?.high?.url}
                            alt = {snippet?.title} 
-                           sx = {{width: 358, height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
+                           sx = {{width: {xs: '100%', md: "358px"} , height: 180, border:'solid 1px #fff', borderRadius: '10px'}} />            
             </Link>
         </Card>
         <Stack>
@@ -43,7 +46,7 @@ const ResultVideo = ({video: {id: {videoId}, snippet}}) => {
                 </Stack>
             </Link>
             {/* description */}
-            <Typography variant='subtitle1'>
+            <Typography variant='subtitle1' sx={TypoStyle} >
                 {snippet?.description}
             </Typography>
             

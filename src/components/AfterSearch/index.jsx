@@ -17,7 +17,7 @@ const AfterSearch = () => {
   return (
     <Box p={'0 3em'}>
       {searchResult &&
-      <Typography variant= 'h5' p ={"1.5em 0.2em"} fontWeight={'600'}>
+      <Typography variant= 'h5' p ={"0 0.2em 1.5em 0"} fontWeight={'600'}>
         Search Results for <span style={{color:'#F31503', fontStyle: 'italic'}}>{searchResult}</span>  Videos
       </Typography>}
       

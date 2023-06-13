@@ -1,22 +1,15 @@
 import React from 'react'
-import { Box, Button, Stack, Typography} from '@mui/material'
+import { Box, Stack, Typography} from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import Notification from '@mui/icons-material/NotificationsNoneOutlined';
 import styled from '@emotion/styled'
 import './master.css'
 import { fetchFromAPI } from '../../data';
 import { useState, useEffect } from 'react';
+import Subscribe from './Subscribe';
 
 const StyledTypography = styled(Typography)`
   line-height: 40px
 `;
-
-const TypoStyle = {
-  width: "500px",
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-  textOverflow: 'ellipsis',
-};
 
 const InfoBar = ({id}) => {
 
@@ -43,10 +36,8 @@ const InfoBar = ({id}) => {
               <CheckCircleIcon sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
             </Typography>
 
-            <Button variant="contained" startIcon={<Notification />} 
-            sx={{backgroundColor: '#f1f1f1', color: 'black', borderRadius: '50px', maxWidth: '130px', margin:{xs: '1em 0', md:'0'}}} >
-              Subscribe
-            </Button>
+            {/* subscribe button */}
+            <Subscribe subscriberCount={channel?.statistics?.subscriberCount}/>
           </Stack>
           
           {/* statistics */}
@@ -65,8 +56,8 @@ const InfoBar = ({id}) => {
             
           </StyledTypography> 
 
-          <Typography className='description' sx={TypoStyle}> 
-            {/* description */}
+          {/* description */}
+          <Typography className='description' width={{xs:'230px', sm:'650px'}}> 
             {`${channel?.snippet?.description}`}
           </Typography> 
           
