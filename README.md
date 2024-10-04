@@ -4,6 +4,11 @@ Hi there! Welcome to my YouTube Clone project which I call VibeTube.
 This project aims to replicate the core functionality and user experience of YouTube, a popular video-sharing platform. With this clone, you can explore, search, and watch videos just like you would on the original YouTube website.
 <br/> <br/>
 
+<div align="center">
+	<img align= "center" src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Youtube_2018.gif" width="270">
+<br/>  
+</div><br/>
+
 ## 💻 Technologies Used
 ### For building the UI and styling the application
 <img align= "center" src="https://www.datocms-assets.com/45470/1631110818-logo-react-js.png" width="150"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/120px-CSS3_logo_and_wordmark.svg.png" alt="css3" width="50"/>
@@ -30,7 +35,7 @@ This project aims to replicate the core functionality and user experience of You
 • Install the dependencies: npm i <br/>
 • Start the development server: npm start <br/>
 <br/>
-__OR__ visit <a href="https://splendorous-cannoli-7bcac8.netlify.app/"> this deployment link </a> 
+__OR__ visit <a href="https://vibe-tube.netlify.app/"> this deployment link </a> 
 
 <br/><br/>
 ## ⭐ Features and Functionalities
